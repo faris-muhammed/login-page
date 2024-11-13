@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Panel</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+
+        .btn {
+            padding: 8px;
+            text-decoration: none;
+            margin-right: 5px;
+            display: inline-block;
+        }
+
+        .btn-edit {
+            background-color: #4CAF50;
+            color: white;
+        }
+
+        .btn-delete {
+            background-color: #f44336;
+            color: white;
+        }
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+        #myForm {
+            display: none;
+            border: 1px solid #ccc;
+            padding: 20px;
+            margin: 20px;
+        }
+    </style>
+</head>
+<body>
+    <a href="/adlogout"><button type="submit" style="margin-left: 1253px; margin-top: 10px; background-color: #f44336;">Logout</button></a>
+<h2>Admin: {{.Admin}}</h2>
+<h2>User Management</h2>
+<p style="color: #f44336;">{{.Erro}}</p>
+<!-- <p style="color: red;">{{.msg}}</p> -->
+<table>
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        {{range .Datas}}
+            <tr>
+                <td>{{.ID}}</td>
+                <td>{{.Name}}</td>
+                <td>{{.Email}}</td>
+                <td>
+                <a href="/block/{{.ID}}"  data-id="1"><button class="btn btn-delete btn-delete-user">{{.Status}}</button></a>
+                <a href="/edit/{{.ID}}" data-id="1"><button class="btn btn-edit btn-edit-user">Edit</button></a>
+                <a href="/delete/{{.ID}}"  data-id="1"><button class="btn btn-delete btn-delete-user">Delete</button></a>
+                </td>
+           
+            {{end}}
+    </tbody>
+</table>
+</body>
+</html>
